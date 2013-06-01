@@ -27,7 +27,7 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
-<script src="/static/us.json"></script>
+<script src="/static/philly.json"></script>
 
 <script>
 
@@ -47,7 +47,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 queue()
-    .defer(d3.json, "/static/us.json")
+    .defer(d3.json, "/static/philly.json")
     .defer(d3.tsv, "/static/unemployment.tsv", function(d) { rateById.set(d.id, +d.rate); })
     .await(ready);
 
