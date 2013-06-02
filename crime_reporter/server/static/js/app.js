@@ -163,6 +163,8 @@ app.legend.append("text")
       }
     });
 
+
+
 // Charts
 app.charts = {};
 
