@@ -21,7 +21,7 @@ def load_url(url):
     value = urlparse(url)
     #network location of urlparse
     conn = httplib.HTTPConnection('access.alchemyapi.com')
-    path = 'calls/url/URLGetRankedNamedEntities?apikey=5d6c2144be5020ccd0d19ff04419afb28ef2cc99&url=' + urllib.urlencode(url)
+    path = '/calls/url/URLGetRankedNamedEntities?apikey=5d6c2144be5020ccd0d19ff04419afb28ef2cc99&outputMode=json&url=' + urllib.quote_plus(url)
     print path
     try:
         conn.request('GET', path)
