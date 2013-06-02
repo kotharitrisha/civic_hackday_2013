@@ -28,17 +28,41 @@ def load_url(url):
 		conn.request('GET', path)
 		res = conn.getresponse().read()
 		t =  json.loads(res)
-		children = []
-		child = {}
-		
-		for e in t['entities']:
-			if(check(children, e['type'])):
-				pass
-			else:
-				children.append({'name':e['type'], 'children':[]})
-			#children.append({'name':e['name'], 'children':[]})
-		out['children'] = children
-		print out
+		print t
+                
+		entities = {}
+                children = []
+                
+                for e in t['entities']:
+                    if (e['type'] not in entities):
+                        entities[e['type']] = []
+                        if ('disambiguated' in e):
+                                entities[e['type']].append({e['text']: e['disambiguated']})
+                    else:
+                        if ('disambiguated' in e):
+                            entities[e['type']].append({e['text']: e['disambiguated']})
+
+                print "LOLOLOLOL"
+                print "YAYYAYAY"
+                
+                print entities
+                for el in entities:
+                    yo = []
+                    #print el
+                    for ch in entities[el]:
+                    #    print el
+                        for key in ch:
+                            #if ('disambiguated' in entities[el]):
+                            if 'subType' in ch[key]:
+                                print ch[key]['subType']
+                                yo.append({'name': key, 'children': [{'name': k} for k in ch[key]['subType']]})
+                            else :
+                                yo.append({'name': key, 'children' : None})
+                    children.append({'name': el, 'children': yo}) 
+                     #   print yo
+                        
+                out['children'] = children
+		#print out
     except:
         print sys.exc_info()
 
