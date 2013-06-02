@@ -41,9 +41,10 @@ $(document).ready(function(){
        url: '/url_concept',
        data: {'url_name' :$('#url_show').val() },
        success: function (res) {
-          //console.log(res);
-         r =  {"name":"root","children":[{"name":"advise","children":[{"name":"[(Sam,Karger) -- (Anant)]","children":[{"name":"agents","children":[{"name":"Sam"},{"name":"Karger"}]},{"name":"patients","children":[{"name":"Anant"}]},{"name":"locations","children":[{"action":"advise","name":"MIT"}]}]}]},{"name":"work","children":[{"name":"[(students) -- (projects)]","children":[{"name":"agents","children":[{"name":"students"}]},{"name":"patients","children":[{"name":"projects"}]},{"name":"time","children":[{"action":"work","name":"summer"}]},{"name":"adjectives","children":[{"name":"(hardworking, students)"}]},{"name":"determiners","children":[{"name":"(Some, students)"}]}]}]},{"name":"entertain","children":[{"name":"[(singers) -- (audience)]","children":[{"name":"agents","children":[{"name":"singers"}]},{"name":"patients","children":[{"name":"audience"}]},{"name":"locations","children":[{"action":"entertain","name":"stadium"}]},{"name":"adverbs","children":[{"name":"(brilliantly, entertain)"}]},{"name":"adjectives","children":[{"name":"(lively, stadium)"}]},{"name":"determiners","children":[{"name":"(The, singers)"},{"name":"(the, audience)"}]}]}]}]}
-          root = r;
+          console.log(res);
+          /*
+         r =  {"name":"root","children":[{"name":"advise","children":[{"name":"[(Sam,Karger) -- (Anant)]","children":[{"name":"agents","children":[{"name":"Sam"},{"name":"Karger"}]},{"name":"patients","children":[{"name":"Anant"}]},{"name":"locations","children":[{"action":"advise","name":"MIT"}]}]}]},{"name":"work","children":[{"name":"[(students) -- (projects)]","children":[{"name":"agents","children":[{"name":"students"}]},{"name":"patients","children":[{"name":"projects"}]},{"name":"time","children":[{"action":"work","name":"summer"}]},{"name":"adjectives","children":[{"name":"(hardworking, students)"}]},{"name":"determiners","children":[{"name":"(Some, students)"}]}]}]},{"name":"entertain","children":[{"name":"[(singers) -- (audience)]","children":[{"name":"agents","children":[{"name":"singers"}]},{"name":"patients","children":[{"name":"audience"}]},{"name":"locations","children":[{"action":"entertain","name":"stadium"}]},{"name":"adverbs","children":[{"name":"(brilliantly, entertain)"}]},{"name":"adjectives","children":[{"name":"(lively, stadium)"}]},{"name":"determiners","children":[{"name":"(The, singers)"},{"name":"(the, audience)"}]}]}]}]}*/
+          root = res;
           root.x0 = h / 2;
           root.y0 = 0;
 

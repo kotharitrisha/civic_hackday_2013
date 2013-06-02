@@ -23,19 +23,28 @@ def load_url(url):
     conn = httplib.HTTPConnection('access.alchemyapi.com')
     path = '/calls/url/URLGetRankedNamedEntities?apikey=5d6c2144be5020ccd0d19ff04419afb28ef2cc99&outputMode=json&url=' + urllib.quote_plus(url)
     print path
+    out = {'name': 'root', 'children':[]}
     try:
-        conn.request('GET', path)
+		conn.request('GET', path)
+		res = conn.getresponse().read()
+		t =  json.loads(res)
+		children = []
+		child = {}
+		
+		for e in t['entities']:
+			children.append({'name':e['type'], 'children':[]})
+		out['children'] = children
+		print out
     except:
         print sys.exc_info()
-    res = conn.getresponse().read()
-    #return json.loads(res)
-    return res
+
+    return json.dumps(out)
 
 #exempts methods from cross site attack
 @csrf_exempt
 def concept(request):
     if (request.method == "POST"):
         #client side refers to id --- server side refers to name
-        return HttpResponse(load_url(request.POST['url_name']))
+        return HttpResponse(load_url(request.POST['url_name']), mimetype="application/json")
     return render_to_response('concept.html')
     
