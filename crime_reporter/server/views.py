@@ -6,3 +6,8 @@ from django.http import *
 def home(request):
     #render_to_Response will automatically add all headers etc for the response
     return render_to_response('index.html')
+
+
+def test(request):
+    #render_to_Response will automatically add all headers etc for the response
+    return render_to_response('test.html')

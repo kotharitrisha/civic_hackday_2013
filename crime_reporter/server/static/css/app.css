@@ -1,0 +1,211 @@
+/* Foundation Overrides */
+select {
+  width: auto;
+}
+
+/* SVG */
+path {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: .5px;
+}
+
+path:hover {
+  fill: #FDD017;
+  cursor: pointer;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: none;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: #333;
+}
+
+.y.axis .tick {
+  stroke: #555;
+  stroke-width: 1;
+}
+
+.x.axis text {
+  font-size: 10px;
+  padding: 5px;
+}
+
+.y.axis text {
+  font-size: 10px;
+}
+
+/* Page */
+h3 {
+  color: #333;
+  margin-top: 0px;
+}
+
+h4 {
+  margin: 0 5px;
+}
+
+h5 {
+  margin: 0 0 8px 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+#map-container {
+  z-index: 10;
+}
+
+#map {
+  display:inline-block;
+}
+
+#legend {
+  height: 50px;
+}
+
+#legend text {
+  font-size: 11px;
+  font-family: Helvetica, arial, sans-serif;
+}
+
+.increase-four {
+  color: #DE2D26;
+  fill: #DE2D26;
+}
+
+.increase-three {
+  color: #FB6A4A;
+  fill: #FB6A4A;
+}
+
+.increase-two {
+  color: #FCAE91;
+  fill: #FCAE91;
+}
+
+.increase-one {
+  color: #FEE5D9;
+  fill: #FEE5D9;
+}
+
+.no-change {
+  color: whiteSmoke;
+  fill: whiteSmoke;
+}
+
+.decrease-one { 
+  color: #BDD7E7;
+  fill: #BDD7E7;
+}
+
+.decrease-two {
+  color: #6BAED6;
+  fill: #6BAED6;
+}
+
+.decrease-three {
+  color: #3182BD;
+  fill: #3182BD;
+}
+
+.decrease-four {
+  color: #08519C;
+  fill: #08519C;
+}
+
+#neighborhood span {
+  border-bottom: solid 2px #FDD017;
+}
+
+table tbody {
+  background-color: #333;
+  font-size: 14px;
+}
+
+table thead tr th {
+  font-size: 14px;
+}
+
+table tbody tr td {
+  color: #fff;
+  font-size: 14px;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #333;
+}
+
+table .title {
+  font-weight: normal;
+}
+
+.stat {
+  font-weight: bolder;
+}
+
+.stat-line {
+
+}
+
+.stat-line.hidden {
+  display: none
+}
+
+.footnote {
+  display: inline-block;
+  background-color: #ccc;
+  font-size: 14px;
+  margin: 15px;
+  width: 80%;
+  padding: 10px;
+}
+
+#violent-charts {
+  padding-bottom: 20px;
+}
+
+#dashboard {
+  font-family: Helvetica, arial, sans-serif;
+}
+
+@media(max-width: 950px) {
+  #dashboard {
+    float: none;
+    width: auto !important;
+  }
+}
+
+.chart-container {
+  display: inline-block;
+  text-align: center;
+  font-size: 11px;
+  width: 78px;
+}
+
+@media(max-width: 767px) {
+  .chart-container {  
+    margin: 0 12px;
+  }
+}
+
+.chart-container span {
+  display: inline-block;
+  height: 45px;
+  width: 115%;
+  padding-left: 10px;
+}
+
+#mini-charts .columns {
+  padding: 0;
+}
+
+@media(max-width: 767px) {
+  .charts {
+    text-align: center;
+  }
+}

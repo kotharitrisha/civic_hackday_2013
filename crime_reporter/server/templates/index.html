@@ -71,11 +71,12 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 queue()
-    .defer(d3.json, "/static/us.json")
+    .defer(d3.json, "/static/philly.json")
     .defer(d3.tsv, "/static/unemployment.tsv", function(d) { rateById.set(d.id, +d.rate); })
     .await(ready);
 
 function ready(error, us) {
+  us.objects.counties.geometries = us.objects.counties.splice(0, 1000)
   svg.append("g")
       .attr("class", "counties")
     .selectAll("path")
