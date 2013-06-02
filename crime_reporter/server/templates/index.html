@@ -31,7 +31,8 @@
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
- 
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
@@ -41,7 +42,7 @@
 //$ = jquery initialization
 //main html body = document [this contains all the html code]
 //whenever on ready, call this function
-$(document).ready(function () {
+ $(document).ready(function () {
   $.ajax({
      type: 'GET',
      url: '/static/us.json',
@@ -87,7 +88,64 @@ function ready(error, us) {
       .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
       .attr("class", "states")
       .attr("d", path);
+
 }
+/**var map = new google.maps.Map(d3.select("#map").node(), {
+  zoom: 8,
+  center: new google.maps.LatLng(37.76487, -122.41948),
+  mapTypeId: google.maps.MapTypeId.TERRAIN
+});
+ 
+// Load the station data. When the data comes back, create an overlay.
+d3.json("stations.json", function(data) {
+  var overlay = new google.maps.OverlayView();
+ 
+  // Add the container when the overlay is added to the map.
+  overlay.onAdd = function() {
+    var layer = d3.select(this.getPanes().overlayLayer).append("div")
+        .attr("class", "stations");
+ 
+    // Draw each marker as a separate SVG element.
+    // We could use a single SVG, but what size would it have?
+    overlay.draw = function() {
+      var projection = this.getProjection(),
+          padding = 10;
+ 
+      var marker = layer.selectAll("svg")
+          .data(d3.entries(data))
+          .each(transform) // update existing markers
+        .enter().append("svg:svg")
+          .each(transform)
+          .attr("class", "marker");
+ 
+      // Add a circle.
+      marker.append("svg:circle")
+          .attr("r", 4.5)
+          .attr("cx", padding)
+          .attr("cy", padding);
+ 
+      // Add a label.
+      marker.append("svg:text")
+          .attr("x", padding + 7)
+          .attr("y", padding)
+          .attr("dy", ".31em")
+          .text(function(d) { return d.key; });
+ 
+      function transform(d) {
+        d = new google.maps.LatLng(d.value[1], d.value[0]);
+        d = projection.fromLatLngToDivPixel(d);
+        return d3.select(this)
+            .style("left", (d.x - padding) + "px")
+            .style("top", (d.y - padding) + "px");
+      }
+    };
+  };
+ 
+  // Bind our overlay to the map…
+  overlay.setMap(map);
+});
+*/
+
 </script>
 </body>
 </html>
