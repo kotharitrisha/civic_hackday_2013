@@ -24,11 +24,35 @@
 
 </style>
 <body>
+
+<!-- We are adding jQuery so that we can refer to its functionality
+// This is required so that we can make AJAX reqs.
+-->
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+ 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 
 <script>
+
+//$ = jquery initialization
+//main html body = document [this contains all the html code]
+//whenever on ready, call this function
+$(document).ready(function () {
+  $.ajax({
+     type: 'GET',
+     url: '/static/us.json',
+     //Called when doc ready on success  
+     success: function (res){
+       //us = JSON.parse(res);
+       us_data = res;
+       console.log(res);
+     }
+  });
+});
 
 var width = 960,
     height = 500;
@@ -46,7 +70,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 queue()
-    .defer(d3.json, "/static/philly.json")
+    .defer(d3.json, "/static/us.json")
     .defer(d3.tsv, "/static/unemployment.tsv", function(d) { rateById.set(d.id, +d.rate); })
     .await(ready);
 
@@ -64,7 +88,6 @@ function ready(error, us) {
       .attr("class", "states")
       .attr("d", path);
 }
-
 </script>
 </body>
 </html>
