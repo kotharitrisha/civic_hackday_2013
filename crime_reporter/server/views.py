@@ -32,13 +32,24 @@ def load_url(url):
 		child = {}
 		
 		for e in t['entities']:
-			children.append({'name':e['type'], 'children':[]})
+			if(check(children, e['type'])):
+				pass
+			else:
+				children.append({'name':e['type'], 'children':[]})
+			#children.append({'name':e['name'], 'children':[]})
 		out['children'] = children
 		print out
     except:
         print sys.exc_info()
 
     return json.dumps(out)
+
+
+def check(l, entity):
+	for i in l:
+		if(i['name'] == entity):
+			return True
+	return False
 
 #exempts methods from cross site attack
 @csrf_exempt
